@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://u8bl5506ivhk"]
+
+[ext_resource type="Script" uid="uid://b24csjk75bv42" path="res://will/target.gd" id="1_dfpsy"]
+[ext_resource type="Texture2D" uid="uid://dmjy7igt0asiy" path="res://will/maison_1.png" id="2_t4f3m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(329, 364)
+
+[node name="Target" type="Node2D" unique_id=488344208]
+script = ExtResource("1_dfpsy")
+scales = [0.8, 0.6]
+sprites = ["res://will/maison_1.png", "res://will/arbre_1.png"]
+
+[node name="TargetSprite" type="Sprite2D" parent="." unique_id=397101506]
+position = Vector2(-1, -1)
+texture = ExtResource("2_t4f3m")
+offset = Vector2(1, -255)
+metadata/_edit_group_ = true
+
+[node name="TargetHitbox" type="Area2D" parent="TargetSprite" unique_id=398757266]
+position = Vector2(0, -257)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetSprite/TargetHitbox" unique_id=491952580]
+position = Vector2(-3.5, 73)
+shape = SubResource("RectangleShape2D_g4v7s")
