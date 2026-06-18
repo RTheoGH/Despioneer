@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://jlfsmhh2xx0g"]
+
+[ext_resource type="Script" uid="uid://bk38wurexjrwk" path="res://test_azou/trajectoire.gd" id="1_kjmbs"]
+[ext_resource type="Texture2D" uid="uid://n16q2gl7iqri" path="res://test_azou/mbappe.jpeg" id="2_ss2m3"]
+[ext_resource type="PackedScene" uid="uid://cjyjlxyjntdft" path="res://test_azou/planete.tscn" id="3_sheq7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jj44x"]
+radius = 35.22783
+
+[node name="Node2D" type="Node2D" unique_id=431786021 node_paths=PackedStringArray("sonde")]
+script = ExtResource("1_kjmbs")
+sonde = NodePath("Sonde")
+
+[node name="Sonde" type="RigidBody2D" parent="." unique_id=1841474792]
+position = Vector2(130, 198)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Sonde" unique_id=947877125]
+position = Vector2(-2.3841858e-06, 9.536743e-07)
+scale = Vector2(0.116120234, 0.116120234)
+texture = ExtResource("2_ss2m3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sonde" unique_id=1007894659]
+shape = SubResource("CircleShape2D_jj44x")
+
+[node name="Planete" parent="." unique_id=82933576 instance=ExtResource("3_sheq7")]
+position = Vector2(301, 386)
+mass = 1500.0
+
+[node name="Planete2" parent="." unique_id=193168820 instance=ExtResource("3_sheq7")]
+position = Vector2(597, 123)
+mass = 1500.0
+
+[node name="Planete3" parent="." unique_id=732953381 instance=ExtResource("3_sheq7")]
+position = Vector2(827, 437)
+mass = 1500.0
