@@ -26,17 +26,26 @@ func apply_forces() -> void:
 	
 
 #Ajoute l'orbite traversé au dictionaire "orbites" avec le nom en keys et les infos en values
-func _on_detection_area_area_entered(area: Area2D) -> void:	
-	var planete = area.get_parent()
-	var info = planete.get_info()
-	orbites[info[0]] = [info[1],info[2],info[3]]
-
+func _on_detection_area_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	
+	#On check le type d'area traversé grace aux groupes
+	if parent.is_in_group("Planetes"):
+		var info = parent.get_info()
+		orbites[info[0]] = [info[1],info[2],info[3]]
+	elif parent.is_in_group("Destructibles"):
+		print(area)
+		parent.hit()
+		
 #Retire l'orbite qu'on vient de quitter
 func _on_detection_area_area_exited(area: Area2D) -> void:
-	var planete = area.get_parent()
-	var info = planete.get_info()
-	orbites.erase(info[0])
-
+	if area.get_parent().is_in_group("Planetes"):
+		var planete = area.get_parent()
+		var info = planete.get_info()
+		orbites.erase(info[0])
+	elif area.get_parent().is_in_group("Destructibles"):
+		pass
+		
 #itère à travers orbites et ajoute leur influences à la force principale
 func calculate_attractions() -> Vector2:
 	var force = Vector2(0.0,0.0) 

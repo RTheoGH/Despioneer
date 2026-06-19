@@ -23,11 +23,11 @@ z_as_relative = false
 scale = Vector2(0.13, 0.13)
 texture = ExtResource("2_nry0k")
 
-[node name="DetectionArea" type="Area2D" parent="." unique_id=1652923506]
-collision_mask = 2
+[node name="AtmosphèreDetectionArea" type="Area2D" parent="." unique_id=1652923506]
+collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=42247419]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AtmosphèreDetectionArea" unique_id=42247419]
 shape = SubResource("CircleShape2D_q40gy")
 
-[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
-[connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
+[connection signal="area_entered" from="AtmosphèreDetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_exited" from="AtmosphèreDetectionArea" to="." method="_on_detection_area_area_exited"]

@@ -1,20 +1,20 @@
 extends Node2D
 
 @onready var sprite = $TargetSprite
-@onready var hitbox = $TargetSprite/TargetHitbox
+@onready var hitbox = $TargetHitbox
 
 var index:int = 0
-@export var scales: Array[float]
 
+@export var scales: Array[float]
 @export var sprites: Array[String]
+
+var touche = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#oriente(Vector2(300,0))
 	index = randi_range(0,1)
 	sprite.texture = load(sprites[index])
 	sprite.scale = Vector2(scales[index]+randf_range(-0.1,0.1),scales[index]+randf_range(-0.1,0.1))
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,4 +31,9 @@ func get_hitbox():
 func oriente(cible):
 	var angle = rad_to_deg(get_angle_to(cible))-90
 	rotate(deg_to_rad(angle))
-	#sprite.look_at(cible)
+
+func hit():
+	if not touche :
+		#queue_free()
+		scale.y *= 0.2 
+		touche = true
