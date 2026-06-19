@@ -2,14 +2,30 @@ extends Node2D
 
 var rayon = 540
 
+@onready var planeteSprite = $PlaneteSprite
+@onready var atmosSprite = $AtmosphereSprite
+
 @export var gravite := 900.0
 @export var planete_name = "Planete"
 @export var lore = "Lorem ipsum"
 
+@export var planeteSprites: Array[String]
+@export var atmosSprites: Array[String]
+@export var atmosScales: Array[float]
+
+var index = 0
+var Tmin = 5
+var Tmax = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	for i in 10 : spawn_target()
+	#index = randi_range(0,1)
+	planeteSprite.texture = load(planeteSprites[index])
+	atmosSprite.texture = load(atmosSprites[index])
+	atmosSprite.scale = Vector2(atmosScales[index],atmosScales[index])
+	planeteSprite.rotation = randf_range(0,360)
+	atmosSprite.rotation = randf_range(0,360)
+	for i in randi_range(Tmin, Tmax) : spawn_target()
 	pass # Replace with function body.
 
 #Spawn un objet à la surface de la planète puis l'oriente vers son centre
