@@ -15,10 +15,10 @@ collision_layer = 8
 mass = 1000.0
 gravity_scale = 0.0
 script = ExtResource("1_8knue")
-planeteSprites = Array[String](["res://will/planete_1.png", "res://test_azou/Planete_A.png"])
-atmosSprites = Array[String](["res://will/atmos_1.png", "res://test_azou/namek_atmosphere.png"])
-atmosScales = Array[float]([1.2, 1.5])
-planeteScales = Array[float]([1.0, 2.2])
+planeteSprites = Array[String](["res://will/planete_1.png", "res://test_azou/Planete_A.png", "res://este/planete.png"])
+atmosSprites = Array[String](["res://will/atmos_1.png", "res://test_azou/namek_atmosphere.png", "res://este/atmosphere.png"])
+atmosScales = Array[float]([1.2, 1.5, 4.5])
+planeteScales = Array[float]([1.0, 2.2, 2.5])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1871859351]
 shape = SubResource("CircleShape2D_8knue")
