@@ -34,7 +34,6 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		var info = parent.get_info()
 		orbites[info[0]] = [info[1],info[2],info[3]]
 	elif parent.is_in_group("Destructibles"):
-		print(area)
 		parent.hit()
 		
 #Retire l'orbite qu'on vient de quitter

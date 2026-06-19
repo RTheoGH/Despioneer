@@ -7,6 +7,7 @@ var index:int = 0
 
 @export var scales: Array[float]
 @export var sprites: Array[String]
+@export var points: Array[int]
 
 var touche = false
 
@@ -35,5 +36,7 @@ func oriente(cible):
 func hit():
 	if not touche :
 		#queue_free()
-		scale.y *= 0.2 
+		scale.y *= 0.2
+		PlayerInfo.set_score(PlayerInfo.score + points[index])
+		print(PlayerInfo.score)
 		touche = true

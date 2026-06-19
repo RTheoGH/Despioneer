@@ -10,6 +10,7 @@ size = Vector2(329, 364)
 script = ExtResource("1_dfpsy")
 scales = Array[float]([0.8, 0.6])
 sprites = Array[String](["res://will/maison_1.png", "res://will/arbre_1.png"])
+points = Array[int]([20, 30])
 
 [node name="TargetSprite" type="Sprite2D" parent="." unique_id=397101506]
 position = Vector2(-1, -1)
