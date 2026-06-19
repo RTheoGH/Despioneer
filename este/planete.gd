@@ -1,7 +1,10 @@
 extends Node2D
 
 var rayon = 540
-var gravite := 9.0
+
+@export var gravite := 90.0
+@export var planete_name = "Planete"
+@export var lore = "Lorem ipsum"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,11 +12,7 @@ func _ready() -> void:
 	for i in 10 : spawn_target()
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+#Spawn un objet à la surface de la planète puis l'oriente vers son centre
 func spawn_target():
 	var target_scene = load("res://will/Target.tscn")
 	var target = target_scene.instantiate()
@@ -22,5 +21,6 @@ func spawn_target():
 	target.position = Vector2(cos(2*PI*test)*rayon, sin(2*PI*test)*rayon)
 	target.oriente(position)
 
-func get_grav_force() -> float:
-	return gravite
+#Retourne sous forme de tableau les info de la planete
+func get_info() -> Array:
+	return [planete_name,gravite,global_position,lore]
