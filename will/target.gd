@@ -4,6 +4,7 @@ extends Node2D
 @onready var hitbox = $TargetHitbox
 
 var index:int = 0
+var planeteIndex:int = 0
 
 @export var scales: Array[float]
 @export var sprites: Array[String]
@@ -11,9 +12,10 @@ var index:int = 0
 
 var touche = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	index = randi_range(0,3)
+	index = randi_range(0,3)+planeteIndex*4
 	sprite.texture = load(sprites[index])
 	sprite.scale = Vector2(scales[index]+randf_range(-0.1,0.1),scales[index]+randf_range(-0.1,0.1))
 	sprite.flip_h = randi_range(0,1)

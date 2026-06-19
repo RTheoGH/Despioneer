@@ -12,6 +12,7 @@ var rayon = 540
 @export var planeteSprites: Array[String]
 @export var atmosSprites: Array[String]
 @export var atmosScales: Array[float]
+@export var planeteScales: Array[float]
 
 var index = 0
 var Tmin = 5
@@ -19,10 +20,11 @@ var Tmax = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	#index = randi_range(0,1)
+	index = randi_range(0,1)
 	planeteSprite.texture = load(planeteSprites[index])
 	atmosSprite.texture = load(atmosSprites[index])
 	atmosSprite.scale = Vector2(atmosScales[index],atmosScales[index])
+	planeteSprite.scale = Vector2(planeteScales[index],planeteScales[index])
 	planeteSprite.rotation = randf_range(0,360)
 	atmosSprite.rotation = randf_range(0,360)
 	for i in randi_range(Tmin, Tmax) : spawn_target()
@@ -32,6 +34,7 @@ func _ready() -> void:
 func spawn_target():
 	var target_scene = load("res://will/Target.tscn")
 	var target = target_scene.instantiate()
+	target.planeteIndex = index
 	add_child(target)
 	var test = randf_range(1,2)
 	target.position = Vector2(cos(2*PI*test)*rayon, sin(2*PI*test)*rayon)
