@@ -2,10 +2,19 @@
 
 [ext_resource type="Script" uid="uid://d25thv32qt80l" path="res://scripts/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cx817xlp5538v" path="res://ressources/imgs/planete_terre.png" id="2_p57ef"]
+[ext_resource type="Shader" uid="uid://dw2a4535cv116" path="res://shaders/background.gdshader" id="2_u5sy4"]
 [ext_resource type="Script" uid="uid://cjl5j3xkn8pv1" path="res://tests/este/HUD.gd" id="2_vlr0v"]
 [ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://tests/este/Prototype.ttf" id="3_pn8af"]
 [ext_resource type="PackedScene" uid="uid://28gi7764qbbd" path="res://tests/este/SlingShot.tscn" id="4_qnlwm"]
 [ext_resource type="PackedScene" uid="uid://c0favtk00vids" path="res://tests/will/test_SpaceShip.tscn" id="5_5rirm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p57ef"]
+shader = ExtResource("2_u5sy4")
+shader_parameter/wave_speed = 0.10000000149012
+shader_parameter/wave_frequency = 8.1670003404325
+shader_parameter/wave_amplitude = 0.0710000033725
+shader_parameter/color1 = Color(0, 0.003921569, 0, 0.85490197)
+shader_parameter/color2 = Color(0.050980393, 0.05490196, 0.06666667, 0.7411765)
 
 [sub_resource type="Gradient" id="Gradient_iywne"]
 interpolation_mode = 2
@@ -24,9 +33,10 @@ height = 4252.868
 [node name="game" type="Node2D" unique_id=1671598491]
 script = ExtResource("1_p57ef")
 n_planetes = 10
-distance_min = 2100.0
+distance_min = 2200.0
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1063502516]
+material = SubResource("ShaderMaterial_p57ef")
 offset_left = -17523.0
 offset_top = -9854.0
 offset_right = 18596.61

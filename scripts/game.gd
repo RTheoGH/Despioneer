@@ -2,14 +2,16 @@ extends Node2D
 
 @onready var planete : PackedScene = preload("res://tests/este/Planete.tscn")
 
-@export var p1 : Vector2 = Vector2(-6000,-3500)
-@export var p2 : Vector2 = Vector2(6000, 3500)
+@export var p1 : Vector2 = Vector2(-6400,-4000)
+@export var p2 : Vector2 = Vector2(6400, 4000)
 @export var n_planetes : int = 20
 @export var distance_min : float = 2500.0
 @export var max_essais : int = 10
 
 @export var vitesse_rotation_min = -1.0
 @export var vitesse_rotation_max = 1.0
+@export var scale_min = 0.7
+@export var scale_max = 1.2
 
 @export var free_cam : bool = false
 @export var directed_cam : bool = true
@@ -33,17 +35,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	for data in planetes_data:
 		data.node.rotation += data.vitesse * delta
+		#data.node.scale = Vector2(data.scale, data.scale)
 		
 func _input(event: InputEvent) -> void:
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and free_cam:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			zoom_camera(1.0 + zoom_speed, event.position)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			zoom_camera(1.0 - zoom_speed, event.position)
-		elif event.button_index == MOUSE_BUTTON_LEFT and free_cam:
+		elif event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed and event.ctrl_pressed:
 				dragging = true
 			else:
@@ -128,9 +131,10 @@ func spawn_planete():
 	planete_instance.fade_in()
 	
 	var vitesse = randf_range(vitesse_rotation_min, vitesse_rotation_max)
+	var scale = randf_range(scale_min, scale_max)
 	if vitesse == 0.0:
 		vitesse = 0.1
-	planetes_data.append({"node": planete_instance, "vitesse": vitesse})
+	planetes_data.append({"node": planete_instance, "vitesse": vitesse, "scale": scale})
 
 
 func _on_launch_zone_mouse_entered() -> void:

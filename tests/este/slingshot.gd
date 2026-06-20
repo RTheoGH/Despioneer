@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		aim.visible = false
 		spawn_ship()
 		
-	if Input.is_action_just_pressed("center_cam_on_ship"):
+	if Input.is_action_just_pressed("center_cam_on_ship") and ship_spawned:
 		cam_directed = !cam_directed
 		
 		if cam_directed:
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		
 	if camera_catching_up and is_instance_valid(current_ship):
 		var cam = get_parent().get_node("Camera2D")
-		var catchup_factor = clamp(current_ship.velocity.length() * 0.001, 0.05, 0.5)
+		var catchup_factor = clamp(current_ship.velocity.length() * 0.0001, 0.05, 0.5)
 		cam.position = cam.position.lerp(
 			current_ship.position, 
 			catchup_factor
