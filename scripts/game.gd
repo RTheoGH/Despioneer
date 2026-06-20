@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var planete : PackedScene = preload("res://tests/este/Planete.tscn")
-@onready var asteroid : PackedScene = preload("res://tests/will/Rocher.tscn")
+@onready var planete : PackedScene = preload("res://scenes/planete.tscn")
+@onready var asteroid : PackedScene = preload("res://scenes/rocher.tscn")
 
 @export var p1 : Vector2 = Vector2(-6400,-4000)
 @export var p2 : Vector2 = Vector2(6400, 4000)
@@ -31,19 +31,24 @@ var planetes_data : Array = []
 var mouse_in_launch_zone = false
 
 func _ready() -> void:
+	get_node("Launch_zone/CollisionShape2D").disabled = true
 	for i in range(n_planetes):
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.025).timeout
 		spawn_planete()
 	for i in range(n_asteroids):
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.0005).timeout
 		spawn_asteroids()
+	get_node("Launch_zone/CollisionShape2D").disabled = false
+	$CanvasLayer/RichTextLabel.show()
+	await get_tree().create_timer(1).timeout
+	$CanvasLayer/RichTextLabel.hide()
 	
 func _process(delta: float) -> void:
 	for data in planetes_data:
 		data.node.rotation += data.vitesse * delta
 		#data.node.scale = Vector2(data.scale, data.scale)
 		
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -103,9 +108,9 @@ func clamp_camera() -> void:
 	cam.position = pos
 
 # Position alétoire entre deux points
-func random_pos(p1 : Vector2, p2 : Vector2) -> Vector2:
-	var x = randf_range(p1.x, p2.x)
-	var y = randf_range(p1.y, p2.y)
+func random_pos(point1 : Vector2, point2 : Vector2) -> Vector2:
+	var x = randf_range(point1.x, point2.x)
+	var y = randf_range(point1.y, point2.y)
 	return Vector2(x,y)
 
 # Vérifie que la pos est valide
@@ -143,10 +148,10 @@ func spawn_planete():
 	planete_instance.fade_in()
 	
 	var vitesse = randf_range(vitesse_rotation_min, vitesse_rotation_max)
-	var scale = randf_range(scale_min, scale_max)
+	var taille = randf_range(scale_min, scale_max)
 	if vitesse == 0.0:
 		vitesse = 0.1
-	planetes_data.append({"node": planete_instance, "vitesse": vitesse, "scale": scale})
+	planetes_data.append({"node": planete_instance, "vitesse": vitesse, "taille": taille})
 
 func spawn_asteroids():
 	var pos : Vector2

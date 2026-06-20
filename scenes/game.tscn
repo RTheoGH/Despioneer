@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://d25thv32qt80l" path="res://scripts/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cx817xlp5538v" path="res://ressources/imgs/planete_terre.png" id="2_p57ef"]
 [ext_resource type="Shader" uid="uid://dw2a4535cv116" path="res://shaders/background.gdshader" id="2_u5sy4"]
-[ext_resource type="Script" uid="uid://cjl5j3xkn8pv1" path="res://tests/este/HUD.gd" id="2_vlr0v"]
 [ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://tests/este/Prototype.ttf" id="3_pn8af"]
+[ext_resource type="Script" uid="uid://iaf35ch72kja" path="res://scripts/HUD.gd" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://28gi7764qbbd" path="res://tests/este/SlingShot.tscn" id="4_qnlwm"]
-[ext_resource type="PackedScene" uid="uid://c0favtk00vids" path="res://tests/will/test_SpaceShip.tscn" id="5_5rirm"]
+[ext_resource type="Script" uid="uid://8hcdyrpses7a" path="res://scripts/slingshot.gd" id="7_vtaks"]
 [ext_resource type="AudioStream" uid="uid://bs3w46iij5jgi" path="res://ressources/musics/space jam - Pac.wav" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://dk3r5ypkwhr0v" path="res://scenes/soleil.tscn" id="9_0tnpc"]
 
@@ -58,7 +58,7 @@ rotation = -0.76404095
 shape = SubResource("CapsuleShape2D_82o31")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1175517609 node_paths=PackedStringArray("score_label")]
-script = ExtResource("2_vlr0v")
+script = ExtResource("4_0tnpc")
 score_label = NodePath("Label")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1241588513]
@@ -71,8 +71,27 @@ theme_override_font_sizes/font_size = 30
 text = "SCORE :"
 metadata/_edit_use_anchors_ = true
 
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=138611860]
+visible = false
+anchors_preset = -1
+anchor_left = 0.328
+anchor_top = 0.469
+anchor_right = 0.67200005
+anchor_bottom = 0.531
+offset_left = 0.14398193
+offset_top = 0.08798218
+offset_right = -0.14404297
+offset_bottom = -0.088012695
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_pn8af")
+theme_override_font_sizes/normal_font_size = 32
+text = "START !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SlingShot" parent="." unique_id=1821280342 instance=ExtResource("4_qnlwm")]
-modeleShip = ExtResource("5_5rirm")
+script = ExtResource("7_vtaks")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1251929492]
 zoom = Vector2(0.06, 0.06)
@@ -82,7 +101,7 @@ stream = ExtResource("8_gee14")
 volume_db = -15.0
 
 [node name="Soleil" parent="." unique_id=926955801 instance=ExtResource("9_0tnpc")]
-position = Vector2(11936, -6950)
+position = Vector2(11570, -7315)
 
 [connection signal="mouse_entered" from="Launch_zone" to="." method="_on_launch_zone_mouse_entered"]
 [connection signal="mouse_exited" from="Launch_zone" to="." method="_on_launch_zone_mouse_exited"]

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bydadmvi7ejxy"]
+
+[ext_resource type="Script" uid="uid://djiumewrjj6x2" path="res://scripts/rocher.gd" id="1_oewhh"]
+[ext_resource type="Texture2D" uid="uid://bn6sabhdsp1cs" path="res://icon.svg" id="2_l88ts"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 64.49806
+
+[node name="RocherHitbox" type="RigidBody2D" unique_id=917916693 groups=["Destructibles"]]
+gravity_scale = 0.0
+script = ExtResource("1_oewhh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1401388111]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="RocherSprite" type="Sprite2D" parent="." unique_id=227403274]
+texture = ExtResource("2_l88ts")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2069002725]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=907859147]
+shape = SubResource("CircleShape2D_g4v7s")

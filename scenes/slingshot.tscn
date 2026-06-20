@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dlthnq06dg8oq"]
+
+[ext_resource type="Script" uid="uid://8hcdyrpses7a" path="res://scripts/slingshot.gd" id="1_fipy2"]
+[ext_resource type="Texture2D" uid="uid://cvlhp164m0uoq" path="res://tests/este/linetrace.png" id="2_3aosl"]
+
+[node name="SlingShot" type="Node2D" unique_id=1821280342]
+script = ExtResource("1_fipy2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1965235002]
+texture = ExtResource("2_3aosl")
+offset = Vector2(5, 0)

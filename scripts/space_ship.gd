@@ -40,7 +40,9 @@ func calculate_attractions() -> Vector2:
 	
 	var dir_sun = (sun.global_position - global_position).normalized()
 	#var force_sun = dir_sun * sun.mass * 0.1 / global_position.distance_to(sun.global_position)
-	var force_sun = dir_sun * sun.mass * 0.0001 * (sun.get_node("GraviteArea/CollisionShape2D").shape.radius - global_position.distance_to(sun.global_position))
+	var force_sun = dir_sun * sun.mass * 0.0001 \
+		* (sun.get_node("GraviteArea/CollisionShape2D").shape.radius \
+			 - global_position.distance_to(sun.global_position))
 	
 	if in_range_sun:
 		force += force_sun

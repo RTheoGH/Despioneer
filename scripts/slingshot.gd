@@ -3,7 +3,7 @@ extends Node2D
 var initial_mouse_pos = Vector2(0.0,0.0)
 @onready var aim = $Sprite2D
 
-@export var modeleShip:PackedScene
+var ship_scene : PackedScene = preload("res://scenes/space_ship.tscn")
 
 var is_aiming = false
 
@@ -75,7 +75,6 @@ func _physics_process(_delta: float) -> void:
 		end_directed_cam()
 		
 func spawn_ship() -> void:
-	var ship_scene = modeleShip
 	var ship = ship_scene.instantiate()
 	ship.velocity = (initial_mouse_pos - get_global_mouse_position()).normalized() * (get_global_mouse_position() - initial_mouse_pos).length()
 	ship_spawned = true

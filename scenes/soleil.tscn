@@ -6,7 +6,7 @@
 radius = 5053.533
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xci8"]
-radius = 13850.251
+radius = 9750.0
 
 [node name="Soleil" type="RigidBody2D" unique_id=2125018766 groups=["Morts"]]
 collision_layer = 8
