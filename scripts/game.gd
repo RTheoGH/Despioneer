@@ -1,11 +1,14 @@
 extends Node2D
 
 @onready var planete : PackedScene = preload("res://tests/este/Planete.tscn")
+@onready var asteroid : PackedScene = preload("res://tests/will/Rocher.tscn")
 
 @export var p1 : Vector2 = Vector2(-6400,-4000)
 @export var p2 : Vector2 = Vector2(6400, 4000)
-@export var n_planetes : int = 20
-@export var distance_min : float = 2500.0
+@export var n_planetes : int = 10
+@export var n_asteroids : int = 80
+@export var distance_min_planets : float = 2500.0
+@export var distance_min_to_planets : float = 1200.0
 @export var max_essais : int = 10
 
 @export var vitesse_rotation_min = -1.0
@@ -31,6 +34,9 @@ func _ready() -> void:
 	for i in range(n_planetes):
 		await get_tree().create_timer(0.2).timeout
 		spawn_planete()
+	for i in range(n_asteroids):
+		await get_tree().create_timer(0.01).timeout
+		spawn_asteroids()
 	
 func _process(delta: float) -> void:
 	for data in planetes_data:
@@ -103,9 +109,15 @@ func random_pos(p1 : Vector2, p2 : Vector2) -> Vector2:
 	return Vector2(x,y)
 
 # Vérifie que la pos est valide
-func pos_valide(pos : Vector2) -> bool:
+func pos_valide(pos : Vector2, is_planet: bool) -> bool:
+	var d : float
+	if is_planet:
+		d = distance_min_planets
+	else:
+		d = distance_min_to_planets
+	
 	for autre_pos in pos_used:
-		if pos.distance_to(autre_pos) < distance_min:
+		if pos.distance_to(autre_pos) < d:
 			return false
 	return true
 	
@@ -114,7 +126,7 @@ func spawn_planete():
 	var essais = 0
 	
 	pos = random_pos(p1, p2)
-	while not pos_valide(pos) and essais < max_essais:
+	while not pos_valide(pos, true) and essais < max_essais:
 		pos = random_pos(p1, p2)
 		essais += 1
 		
@@ -136,6 +148,22 @@ func spawn_planete():
 		vitesse = 0.1
 	planetes_data.append({"node": planete_instance, "vitesse": vitesse, "scale": scale})
 
+func spawn_asteroids():
+	var pos : Vector2
+	var essais = 0
+	
+	pos = random_pos(p1, p2)
+	while not pos_valide(pos, false) and essais < max_essais:
+		pos = random_pos(p1, p2)
+		essais += 1
+		
+	if essais >= max_essais:
+		print("plus de place")
+		return
+		
+	var asteroid_instance = asteroid.instantiate()
+	asteroid_instance.position = pos
+	add_child(asteroid_instance)
 
 func _on_launch_zone_mouse_entered() -> void:
 	mouse_in_launch_zone = true

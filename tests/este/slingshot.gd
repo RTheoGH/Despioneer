@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 		is_aiming = false
 		aim.visible = false
 		spawn_ship()
+		get_parent().get_node("AudioStreamPlayer2D").play()
 		
 	if Input.is_action_just_pressed("center_cam_on_ship") and ship_spawned:
 		cam_directed = !cam_directed
@@ -67,6 +68,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("reset") and ship_spawned:
 		remove_child(get_node("SpaceShip"))
+		get_parent().get_node("AudioStreamPlayer2D").stop()
 		ship_spawned = false
 		current_ship = null
 		cam_directed = false
