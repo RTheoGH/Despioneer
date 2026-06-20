@@ -10,19 +10,22 @@ func _ready() -> void:
 	
 	pass # Replace with function body.
 
+var is_aiming = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") and not Input.is_key_pressed(KEY_CTRL):
+		is_aiming = true
 		aim.visible = true
 		initial_mouse_pos = get_global_mouse_position()
 		aim.position = initial_mouse_pos
 	
-	if Input.is_action_pressed("click"):
+	if Input.is_action_pressed("click") and is_aiming:
 		aim.rotate(aim.get_angle_to(get_global_mouse_position())+deg_to_rad(180))
 		aim.scale.x = ((get_global_mouse_position() - initial_mouse_pos).length())/10
 		
-	if Input.is_action_just_released("click"):
+	if Input.is_action_just_released("click") and is_aiming:
+		is_aiming = false
 		aim.visible = false
 		spawn_ship()
 		

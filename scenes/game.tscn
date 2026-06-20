@@ -1,19 +1,30 @@
 [gd_scene format=3 uid="uid://noa60c0t6tw5"]
 
-[ext_resource type="PackedScene" uid="uid://idybvatgvwgc" path="res://tests/este/Planete.tscn" id="1_8hyio"]
+[ext_resource type="Script" uid="uid://d25thv32qt80l" path="res://scripts/game.gd" id="1_p57ef"]
 [ext_resource type="Script" uid="uid://cjl5j3xkn8pv1" path="res://tests/este/HUD.gd" id="2_vlr0v"]
 [ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://tests/este/Prototype.ttf" id="3_pn8af"]
 [ext_resource type="PackedScene" uid="uid://28gi7764qbbd" path="res://tests/este/SlingShot.tscn" id="4_qnlwm"]
 [ext_resource type="PackedScene" uid="uid://c0favtk00vids" path="res://tests/will/test_SpaceShip.tscn" id="5_5rirm"]
 
-[node name="TestEste" type="Node2D" unique_id=1671598491]
+[sub_resource type="Gradient" id="Gradient_iywne"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.10227273, 0.4318182, 0.71022725, 0.9943182)
+colors = PackedColorArray(0.18000486, 0.18000486, 0.18000486, 0.6509804, 0.1584723, 0.15847233, 0.1584723, 1, 0.0885599, 0.08855992, 0.08855987, 0.7607843, 0.08468992, 0.08468992, 0.08468992, 0.9098039)
 
-[node name="PlaneteBody" parent="." unique_id=1201935345 instance=ExtResource("1_8hyio")]
-position = Vector2(1306, -489)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_82o31"]
+gradient = SubResource("Gradient_iywne")
+fill = 1
+fill_from = Vector2(0.32478634, 0.6880342)
 
-[node name="PlaneteBody2" parent="." unique_id=2132259082 instance=ExtResource("1_8hyio")]
-position = Vector2(3259, -271)
-planete_name = "Planete_2"
+[node name="game" type="Node2D" unique_id=1671598491]
+script = ExtResource("1_p57ef")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1063502516]
+offset_left = -18067.273
+offset_top = -10386.0
+offset_right = 18052.336
+offset_bottom = 10794.0
+texture = SubResource("GradientTexture2D_82o31")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1175517609 node_paths=PackedStringArray("score_label")]
 script = ExtResource("2_vlr0v")
