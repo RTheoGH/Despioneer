@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cjyjlxyjntdft"]
+
+[ext_resource type="Texture2D" uid="uid://o7r00gtwnvf0" path="res://tests/test_azou/planete.png" id="1_idnlw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rx43g"]
+radius = 53.75872
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmvsh"]
+radius = 174.01149
+
+[node name="Planete" type="RigidBody2D" unique_id=82933576 groups=["Planetes"]]
+mass = 1000.0
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1364883982]
+shape = SubResource("CircleShape2D_rx43g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2134823619]
+position = Vector2(7.6293945e-06, 7.6293945e-06)
+scale = Vector2(0.4942857, 0.4942857)
+texture = ExtResource("1_idnlw")
+
+[node name="Gravite" type="Area2D" parent="." unique_id=532116502]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gravite" unique_id=1151263064]
+shape = SubResource("CircleShape2D_kmvsh")

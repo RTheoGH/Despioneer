@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c6fkj5vbxckdl"]
+
+[ext_resource type="Script" uid="uid://csuyu2g8wjjbt" path="res://scripts/main.gd" id="1_o5qli"]
+
+[node name="Main" type="Control" unique_id=1227824639]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5qli")
+
+[node name="Button" type="Button" parent="." unique_id=34249119]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.437
+anchor_top = 0.469
+anchor_right = 0.565
+anchor_bottom = 0.54
+offset_left = 0.57598877
+offset_top = 0.08798218
+offset_right = 0.11999512
+offset_bottom = 0.07998657
+grow_horizontal = 2
+grow_vertical = 2
+text = "start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

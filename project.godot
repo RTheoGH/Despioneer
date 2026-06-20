@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="UnDesJam2026"
+run/main_scene="uid://c6fkj5vbxckdl"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,6 +23,15 @@ PlayerInfo="*uid://l8ys3ym3nx1f"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://ressources/": "green",
+"res://scenes/": "purple",
+"res://scripts/": "blue",
+"res://tests/": "yellow"
+}
 
 [global_group]
 
