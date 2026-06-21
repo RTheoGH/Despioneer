@@ -15,7 +15,7 @@ var rayon = 540
 @export var planeteScales: Array[float]
 
 @export var target_scene: PackedScene
-@export var index_generated = randi_range(0,4)
+@export var index_generated = randi_range(0,5)
 
 var planete_index = 0
 var Tmin = 5
