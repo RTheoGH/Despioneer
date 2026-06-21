@@ -1,12 +1,13 @@
 extends Node2D
 
 @onready var sprite = $RocherSprite
+@export var sprites: Array[String]
 @export var score = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var s = randf_range(0.5,1.5)
-	sprite.texture = load("res://icon.svg")
+	sprite.texture = load(sprites[randi_range(0,0)])
 	sprite.scale = Vector2(s,s)
 	sprite.rotation = randf_range(0,360)
 	sprite.flip_h = randi_range(0,1)

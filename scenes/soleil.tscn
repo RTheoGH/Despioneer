@@ -24,5 +24,5 @@ shape = SubResource("CircleShape2D_5xci8")
 
 [node name="PlaneteSprite" type="Sprite2D" parent="." unique_id=67609281]
 z_index = 2
-scale = Vector2(30, 30)
+scale = Vector2(5.874074, 5.874074)
 texture = ExtResource("1_grjek")
