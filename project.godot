@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="UnDesJam2026"
+config/name="Despioneer"
+config/version="1.0"
 run/main_scene="uid://c6fkj5vbxckdl"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cmxqf3swh2r3j"
 
 [autoload]
 
