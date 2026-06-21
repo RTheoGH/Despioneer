@@ -54,7 +54,6 @@ n_planetes = 6
 n_asteroids = 200
 vitesse_rotation_min = -0.5
 vitesse_rotation_max = 0.5
-free_cam = true
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=202085596]
 z_index = -10

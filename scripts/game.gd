@@ -41,6 +41,7 @@ var canvas : CanvasLayer
 @onready var timer : Timer = $Timer
 
 func _ready() -> void:
+	PlayerInfo.set_score(0)
 	canvas = get_node("CanvasLayer")
 	get_node("Launch_zone/CollisionShape2D").disabled = true
 	for i in range(n_planetes):
