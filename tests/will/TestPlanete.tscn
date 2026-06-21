@@ -1,19 +1,47 @@
 [gd_scene format=3 uid="uid://bphektnuti2ub"]
 
-[ext_resource type="PackedScene" uid="uid://idybvatgvwgc" path="res://tests/este/Planete.tscn" id="1_8845j"]
+[ext_resource type="Script" uid="uid://cnnio1bhlf2a1" path="res://tests/will/test_planete.gd" id="1_5fh2i"]
 
 [node name="TestPlanete" type="Node2D" unique_id=282177852]
+script = ExtResource("1_5fh2i")
 
-[node name="PlaneteBody" parent="." unique_id=1201935345 instance=ExtResource("1_8845j")]
-position = Vector2(627, 243)
-
-[node name="Camera2D" type="Camera2D" parent="PlaneteBody" unique_id=453934267]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=453934267]
 zoom = Vector2(0.235, 0.235)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1005779513]
 z_index = -13
-offset_left = -2102.0
-offset_top = -1484.0
+offset_left = -3177.0
+offset_top = -1976.0
 offset_right = 3465.0
 offset_bottom = 2136.0
 color = Color(0, 0.019645538, 0.08044457, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=988207152]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1313670318]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1032.0
+offset_top = 546.0
+offset_right = -49.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RELOAD"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer" unique_id=1763622297]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 903.0
+offset_top = 547.0
+offset_right = -216.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="CanvasLayer/Button" to="." method="_on_button_button_down"]
+[connection signal="text_changed" from="CanvasLayer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="text_set" from="CanvasLayer/TextEdit" to="." method="_on_text_edit_text_set"]
