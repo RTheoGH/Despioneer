@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bju1anmh7806m"]
+
+[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://tests/este/Prototype.ttf" id="1_gpxx6"]
+[ext_resource type="Script" uid="uid://cjxt7tfesrkch" path="res://scripts/highscore_line.gd" id="1_hyc3c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyc3c"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(0.31930724, 0.9092263, 0.8166598, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="HighscoreLine" type="Control" unique_id=1740132121]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hyc3c")
+
+[node name="Panel" type="Panel" parent="." unique_id=1698572203]
+layout_mode = 0
+offset_right = 261.6
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hyc3c")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1710046624]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_gpxx6")
+text = "NNN   -   00000"
+horizontal_alignment = 1
