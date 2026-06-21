@@ -10,9 +10,12 @@ var orbites : Dictionary
 var in_range_sun = false
 var sun : Area2D
 
+var current_points = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$propulseur.play()
+	get_node("Label").visible = false
 	sun = get_parent().get_parent().get_node("Soleil")
 	
 	# On désactive la gravité globale du projet pour ce vaisseau
@@ -83,7 +86,13 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		var info = parent.get_info()
 		orbites[info[0]] = [info[1], info[2], info[3]]
 	elif parent.is_in_group("Destructibles"):
-		parent.hit()
+		current_points = parent.hit()
+		print(current_points)
+		
+		$point_timer.start()
+		get_node("Label").visible = true
+		get_node("Label").text = "+" + str(current_points)
+		
 	elif parent.is_in_group("Morts"):
 		in_range_sun = true
 
@@ -95,3 +104,7 @@ func _on_detection_area_area_exited(area: Area2D) -> void:
 		orbites.erase(info[0])
 	elif parent.is_in_group("Destructibles"):
 		pass
+
+
+func _on_point_timer_timeout() -> void:
+	get_node("Label").visible = false

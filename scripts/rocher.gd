@@ -26,6 +26,7 @@ func hit():
 	PlayerInfo.set_score(PlayerInfo.score+score)
 	boom_area.monitoring = true
 	queue_free()
+	return score
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

@@ -34,7 +34,6 @@ offset_left = 63.0
 offset_top = 26.0
 offset_right = 108.0
 offset_bottom = 53.0
-text = "TEST"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1541873896]
 shape = SubResource("CircleShape2D_bhunq")
@@ -148,5 +147,8 @@ stream = ExtResource("4_n0g6o")
 volume_db = 5.0
 max_distance = 500.0
 
+[node name="point_timer" type="Timer" parent="." unique_id=1148251324]
+
 [connection signal="area_entered" from="AtmosphèreDetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="AtmosphèreDetectionArea" to="." method="_on_detection_area_area_exited"]
+[connection signal="timeout" from="point_timer" to="." method="_on_point_timer_timeout"]

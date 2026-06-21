@@ -44,3 +44,4 @@ func hit():
 		PlayerInfo.set_score(PlayerInfo.score + points[index])
 		print(PlayerInfo.score)
 		touche = true
+		return points[index]
