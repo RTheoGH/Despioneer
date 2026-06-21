@@ -38,6 +38,8 @@ var mouse_in_launch_zone = false
 
 var canvas : CanvasLayer
 
+@onready var timer : Timer = $Timer
+
 func _ready() -> void:
 	canvas = get_node("CanvasLayer")
 	get_node("Launch_zone/CollisionShape2D").disabled = true
@@ -57,12 +59,18 @@ func _ready() -> void:
 	canvas.fade_out("Annoncer")
 	
 	$Soleil/AudioStreamPlayer2D.play()
+	timer.start()
 	
 func _process(delta: float) -> void:
 	for data in planetes_data:
 		data.node.rotation += data.vitesse * delta
 		#data.node.scale = Vector2(data.scale, data.scale)
-		
+	
+	var total_seconds = int(timer.time_left)
+	var minutes = total_seconds / 60
+	var seconds = total_seconds % 60
+	canvas.get_node("Time").text = "%02d:%02d" % [minutes, seconds]
+	
 func _input(_event: InputEvent) -> void:
 	pass
 	
@@ -216,3 +224,12 @@ func _on_launch_zone_mouse_exited() -> void:
 func explode_earth() -> void:
 	$Launch_zone/PlaneteTerre.visible = false
 	$Launch_zone/CPUParticles2D.emitting = true
+
+func _on_timer_timeout() -> void:
+	canvas.get_node("Time").text = "00:00"
+	canvas.fade_in("Annoncer")
+	await canvas.type_text("Annoncer", "Game Over ...")
+	await get_tree().create_timer(0.25).timeout
+	canvas.fade_out("Annoncer")
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_packed(load("res://scenes/main.tscn"))

@@ -56,6 +56,7 @@ vitesse_rotation_max = 0.5
 free_cam = true
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=202085596]
+z_index = -10
 texture_repeat = 2
 offset_left = -17628.0
 offset_top = -9793.0
@@ -65,6 +66,7 @@ texture = ExtResource("2_kvpfn")
 stretch_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1063502516]
+z_index = -10
 material = SubResource("ShaderMaterial_p57ef")
 offset_left = -18099.0
 offset_top = -10553.0
@@ -153,6 +155,20 @@ text = "START !"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Time" type="Label" parent="CanvasLayer" unique_id=205874603]
+anchors_preset = -1
+anchor_left = 0.036000002
+anchor_top = 0.079
+anchor_right = 0.143
+anchor_bottom = 0.13900001
+offset_left = -0.47200394
+offset_top = -0.19200134
+offset_right = 0.2639923
+offset_bottom = -0.072006226
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SlingShot" parent="." unique_id=1821280342 instance=ExtResource("4_qnlwm")]
 script = ExtResource("7_vtaks")
 
@@ -176,5 +192,9 @@ position = Vector2(11606, -7166)
 stream = ExtResource("10_vtaks")
 volume_db = -15.0
 
+[node name="Timer" type="Timer" parent="." unique_id=2077688240]
+wait_time = 90.0
+
 [connection signal="mouse_entered" from="Launch_zone" to="." method="_on_launch_zone_mouse_entered"]
 [connection signal="mouse_exited" from="Launch_zone" to="." method="_on_launch_zone_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

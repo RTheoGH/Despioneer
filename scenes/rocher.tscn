@@ -11,7 +11,7 @@ radius = 205.06097
 
 [node name="RocherHitbox" type="RigidBody2D" unique_id=917916693 groups=["Destructibles"]]
 collision_layer = 16
-collision_mask = 25
+collision_mask = 8
 gravity_scale = 0.0
 script = ExtResource("1_oewhh")
 sprites = Array[String](["res://ressources/imgs/nugget_1.png", "res://ressources/imgs/nugget_2.png"])
@@ -31,6 +31,8 @@ collision_mask = 13
 shape = SubResource("CircleShape2D_g4v7s")
 
 [node name="BoomBox" type="Area2D" parent="." unique_id=2093640114]
+collision_layer = 0
+collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoomBox" unique_id=224856856]
