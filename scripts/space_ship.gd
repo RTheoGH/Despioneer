@@ -8,7 +8,7 @@ var orbites : Dictionary
 @export var velocity := Vector2(200.0, 0.0)
 
 var in_range_sun = false
-var sun : RigidBody2D
+var sun : Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,7 +19,6 @@ func _ready() -> void:
 	
 	# On applique la valeur reçue dans 'velocity' à la vraie propriété physique
 	linear_velocity = velocity
-
 
 # On utilise _physics_process pour tout ce qui concerne la physique et les forces
 func _physics_process(_delta: float) -> void:
@@ -33,16 +32,15 @@ func _physics_process(_delta: float) -> void:
 	if linear_velocity.length_squared() > 1.0:
 		rotation = linear_velocity.angle()
 
-
 # Itère à travers orbites et ajoute leurs influences à la force principale
 func calculate_attractions() -> Vector2:
 	var force = Vector2(0.0, 0.0) 
 	
 	var dir_sun = (sun.global_position - global_position).normalized()
+	var radius_sun = sun.get_node("GraviteArea/CollisionShape2D").shape.radius
 	#var force_sun = dir_sun * sun.mass * 0.1 / global_position.distance_to(sun.global_position)
-	var force_sun = dir_sun * sun.mass * 0.0001 \
-		* (sun.get_node("GraviteArea/CollisionShape2D").shape.radius \
-			 - global_position.distance_to(sun.global_position))
+	var force_sun = dir_sun \
+		* (radius_sun - global_position.distance_to(sun.global_position))
 	
 	if in_range_sun:
 		force += force_sun
@@ -59,6 +57,10 @@ func calculate_attractions() -> Vector2:
 
 # Ajoute l'orbite traversée au dictionnaire "orbites" avec le nom en clé et les infos en valeurs
 func _on_detection_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Morts"):
+		get_parent().delete_ship()
+		print("soleil")
+		
 	var parent = area.get_parent()
 	
 	if parent.is_in_group("Planetes"):
@@ -68,7 +70,6 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		parent.hit()
 	elif parent.is_in_group("Morts"):
 		in_range_sun = true
-
 
 # Retire l'orbite qu'on vient de quitter
 func _on_detection_area_area_exited(area: Area2D) -> void:

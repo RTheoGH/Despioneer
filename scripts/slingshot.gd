@@ -66,12 +66,7 @@ func _physics_process(_delta: float) -> void:
 		get_parent().get_node("Camera2D").position = current_ship.position
 	
 	if Input.is_action_just_pressed("reset") and ship_spawned:
-		remove_child(get_node("SpaceShip"))
-		get_parent().get_node("AudioStreamPlayer2D").stop()
-		ship_spawned = false
-		current_ship = null
-		cam_directed = false
-		end_directed_cam()
+		delete_ship()
 		
 func spawn_ship() -> void:
 	var ship = ship_scene.instantiate()
@@ -80,6 +75,14 @@ func spawn_ship() -> void:
 	add_child(ship)
 	ship.position = initial_mouse_pos
 	current_ship = ship
+	
+func delete_ship() -> void:
+	remove_child(get_node("SpaceShip"))
+	get_parent().get_node("AudioStreamPlayer2D").stop()
+	ship_spawned = false
+	current_ship = null
+	cam_directed = false
+	end_directed_cam()
 	
 func start_directed_cam() -> void:
 	var cam = get_parent().get_node("Camera2D")
