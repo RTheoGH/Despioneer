@@ -80,7 +80,7 @@ func spawn_ship() -> void:
 	add_child(ship)
 	ship.position = initial_mouse_pos
 	current_ship = ship
-
+	
 func start_directed_cam() -> void:
 	var cam = get_parent().get_node("Camera2D")
 	camera_following = false
