@@ -36,6 +36,7 @@ height = 4252.868
 script = ExtResource("1_p57ef")
 vitesse_rotation_min = -0.5
 vitesse_rotation_max = 0.5
+free_cam = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1063502516]
 material = SubResource("ShaderMaterial_p57ef")
