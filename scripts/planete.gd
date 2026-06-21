@@ -14,27 +14,25 @@ var rayon = 540
 @export var atmosScales: Array[float]
 @export var planeteScales: Array[float]
 
-var index = 0
+@export var target_scene: PackedScene
+@export var index_generated = randi_range(0,4)
+
+
+var planete_index = 0
 var Tmin = 5
 var Tmax = 15
 
+
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:	
-	index = randi_range(0,3)
-	planeteSprite.texture = load(planeteSprites[index])
-	atmosSprite.texture = load(atmosSprites[index])
-	atmosSprite.scale = Vector2(atmosScales[index],atmosScales[index])
-	planeteSprite.scale = Vector2(planeteScales[index],planeteScales[index])
-	planeteSprite.rotation = randf_range(0,360)
-	atmosSprite.rotation = randf_range(0,360)
-	for i in randi_range(Tmin, Tmax) : spawn_target()
+func _ready() -> void:
+	generate_planete(index_generated)
 	pass # Replace with function body.
 
 #Spawn un objet à la surface de la planète puis l'oriente vers son centre
 func spawn_target():
-	var target_scene = load("res://tests/will/Target.tscn")
+	var target_scene = target_scene
 	var target = target_scene.instantiate()
-	target.planeteIndex = index
+	target.planeteIndex = planete_index
 	add_child(target)
 	var test = randf_range(1,2)
 	target.position = Vector2(cos(2*PI*test)*rayon, sin(2*PI*test)*rayon)
@@ -52,3 +50,13 @@ func fade_in(duration := 0.5):
 	tween.kill()
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, duration)
+
+func generate_planete(index):
+	planete_index = index
+	planeteSprite.texture = load(planeteSprites[index])
+	atmosSprite.texture = load(atmosSprites[index])
+	atmosSprite.scale = Vector2(atmosScales[index],atmosScales[index])
+	planeteSprite.scale = Vector2(planeteScales[index],planeteScales[index])
+	planeteSprite.rotation = randf_range(0,360)
+	atmosSprite.rotation = randf_range(0,360)
+	for i in randi_range(Tmin, Tmax) : spawn_target()
