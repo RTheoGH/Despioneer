@@ -170,6 +170,40 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=539066904]
+anchors_preset = -1
+anchor_left = 0.006
+anchor_top = 0.59000003
+anchor_right = 0.15900001
+anchor_bottom = 0.69100004
+offset_left = 0.08799982
+offset_top = -0.32000732
+offset_right = -0.16801453
+offset_bottom = 0.23196411
+theme_override_colors/font_color = Color(0.57254905, 0.57254905, 0.57254905, 0.5137255)
+theme_override_fonts/font = ExtResource("3_pn8af")
+theme_override_font_sizes/font_size = 16
+text = "Respawn : R
+Zoom : Spacebar (hold)
+"
+
+[node name="Label3" type="Label" parent="CanvasLayer" unique_id=1729407479]
+anchors_preset = -1
+anchor_left = 0.006
+anchor_top = 0.693
+anchor_right = 0.15900001
+anchor_bottom = 0.795
+offset_left = 0.08799982
+offset_top = -0.06402588
+offset_right = -0.16801453
+offset_bottom = -0.16003418
+theme_override_colors/font_color = Color(0.57254905, 0.57254905, 0.57254905, 0.5137255)
+theme_override_fonts/font = ExtResource("3_pn8af")
+theme_override_font_sizes/font_size = 16
+text = "Hold, drag and release
+to launch space ship !"
+metadata/_edit_use_anchors_ = true
+
 [node name="SlingShot" parent="." unique_id=1821280342 instance=ExtResource("4_qnlwm")]
 script = ExtResource("7_vtaks")
 
