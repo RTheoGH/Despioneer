@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chtkfvxw1agal"
+path="res://.godot/imported/son ambiance soleil.wav-ed5783fae4e32c142811fd9ad448165f.sample"
+
+[deps]
+
+source_file="res://ressources/sounds/son ambiance soleil.wav"
+dest_files=["res://.godot/imported/son ambiance soleil.wav-ed5783fae4e32c142811fd9ad448165f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

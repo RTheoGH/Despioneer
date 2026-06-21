@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://backrv8k84er2"]
 
 [ext_resource type="Script" uid="uid://cen30exkwoo0o" path="res://scripts/space_ship.gd" id="1_bt5oy"]
-[ext_resource type="Texture2D" uid="uid://n16q2gl7iqri" path="res://tests/test_azou/mbappe.jpeg" id="2_jy7xo"]
+[ext_resource type="Texture2D" uid="uid://dab8166is4o2q" path="res://ressources/imgs/Sonde.png" id="2_bt5oy"]
+[ext_resource type="AudioStream" uid="uid://dc573rl1vq0ik" path="res://ressources/sounds/son plouf soleil.wav" id="3_jy7xo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
-radius = 36.345562
+radius = 58.034473
 
 [sub_resource type="Gradient" id="Gradient_82o31"]
 colors = PackedColorArray(0.9254902, 0.8980392, 0, 1, 1, 0, 0.05490196, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q40gy"]
-radius = 45.099888
+radius = 62.008064
 
 [node name="SpaceShip" type="RigidBody2D" unique_id=1690226175]
 collision_mask = 8
@@ -24,18 +25,20 @@ shape = SubResource("CircleShape2D_bhunq")
 [node name="Mbappe" type="Sprite2D" parent="." unique_id=95032140]
 z_index = 1
 z_as_relative = false
-scale = Vector2(0.13, 0.13)
-texture = ExtResource("2_jy7xo")
+position = Vector2(0, -3.8146973e-06)
+rotation = 1.5707964
+scale = Vector2(0.23910987, 0.23910989)
+texture = ExtResource("2_bt5oy")
 
 [node name="trail" type="CPUParticles2D" parent="Mbappe" unique_id=197655109]
-position = Vector2(-284.61542, 0)
+position = Vector2(6.198883e-06, 146.15385)
 amount = 400
 speed_scale = 0.1
 randomness = 0.42
 lifetime_randomness = 0.01
 emission_shape = 3
 emission_rect_extents = Vector2(1, 100)
-direction = Vector2(-100, 0)
+direction = Vector2(0, 100)
 spread = 44.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 443.4
@@ -54,7 +57,7 @@ color = Color(1, 0.7372549, 0.24705882, 1)
 color_ramp = SubResource("Gradient_82o31")
 
 [node name="propulseur" type="CPUParticles2D" parent="Mbappe" unique_id=71463668]
-position = Vector2(-284.61542, 0)
+position = Vector2(6.198883e-06, 146.15385)
 amount = 400
 speed_scale = 2.0
 randomness = 0.42
@@ -62,7 +65,7 @@ lifetime_randomness = 0.01
 local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(1, 100)
-direction = Vector2(-100, 0)
+direction = Vector2(0, 100)
 spread = 18.53
 gravity = Vector2(0, 0)
 initial_velocity_min = 443.4
@@ -87,6 +90,14 @@ collision_mask = 6
 shape = SubResource("CircleShape2D_q40gy")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=443273810]
+
+[node name="propulseur" type="AudioStreamPlayer2D" parent="." unique_id=2003241948]
+max_distance = 100.0
+
+[node name="plouf" type="AudioStreamPlayer2D" parent="." unique_id=1203509385]
+stream = ExtResource("3_jy7xo")
+volume_db = -10.0
+max_distance = 100.0
 
 [connection signal="area_entered" from="AtmosphèreDetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="AtmosphèreDetectionArea" to="." method="_on_detection_area_area_exited"]

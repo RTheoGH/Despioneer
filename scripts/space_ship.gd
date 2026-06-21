@@ -62,6 +62,7 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		if area.name == "Soleil":
 			text = "Space ship vaporized..."
 			PlayerInfo.set_score(int(PlayerInfo.score/2))
+			$plouf.play()
 		elif area.name == "Borders":
 			text = "Space ship lost..."
 		else:

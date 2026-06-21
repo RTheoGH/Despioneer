@@ -45,14 +45,18 @@ func _ready() -> void:
 		await get_tree().create_timer(0.025).timeout
 		spawn_planete()
 	for i in range(n_asteroids):
-		#await get_tree().create_timer(0.0005).timeout
+		#await get_tree().create_timer(0.001).timeout
 		spawn_asteroids()
 	get_node("Launch_zone/CollisionShape2D").disabled = false
 	
+	await get_tree().create_timer(0.5).timeout
 	canvas.fade_in("Annoncer")
+	$jingle.play()
 	await canvas.type_text("Annoncer", "Start !")
 	await get_tree().create_timer(0.25).timeout
 	canvas.fade_out("Annoncer")
+	
+	$Soleil/AudioStreamPlayer2D.play()
 	
 func _process(delta: float) -> void:
 	for data in planetes_data:
@@ -177,6 +181,7 @@ func spawn_planete():
 	planete_instance.position = pos
 	add_child(planete_instance)
 	planete_instance.visible = false
+	planete_instance.play_spawn()
 	planete_instance.fade_in()
 	
 	var vitesse = randf_range(vitesse_rotation_min, vitesse_rotation_max)

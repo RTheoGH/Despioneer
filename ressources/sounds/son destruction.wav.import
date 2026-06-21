@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://gd1b8e3fy7r5"
+path="res://.godot/imported/son destruction.wav-e944163da733cc38b9016e7b3ce58ee2.sample"
+
+[deps]
+
+source_file="res://ressources/sounds/son destruction.wav"
+dest_files=["res://.godot/imported/son destruction.wav-e944163da733cc38b9016e7b3ce58ee2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

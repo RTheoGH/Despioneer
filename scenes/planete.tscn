@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b85g6r4sdjvmx" path="res://tests/will/planete.png" id="2_7ec5j"]
 [ext_resource type="PackedScene" uid="uid://csdl3qips5n4k" path="res://scenes/target.tscn" id="2_lhfgk"]
 [ext_resource type="Texture2D" uid="uid://b2lh3tg7iwunp" path="res://tests/will/terre.png" id="3_wfb0q"]
+[ext_resource type="AudioStream" uid="uid://v43j8jhshd0e" path="res://ressources/sounds/son planet spawn.wav" id="5_hu3o5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8knue"]
 radius = 572.04285
@@ -38,3 +39,7 @@ texture = ExtResource("2_7ec5j")
 [node name="PlaneteSprite" type="Sprite2D" parent="." unique_id=1578449415]
 z_index = 2
 texture = ExtResource("3_wfb0q")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=99341964]
+stream = ExtResource("5_hu3o5")
+volume_db = -30.0

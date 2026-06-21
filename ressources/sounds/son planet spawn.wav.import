@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://v43j8jhshd0e"
+path="res://.godot/imported/son planet spawn.wav-0aac0d435b4ac2452b0ea7a1021cffdc.sample"
+
+[deps]
+
+source_file="res://ressources/sounds/son planet spawn.wav"
+dest_files=["res://.godot/imported/son planet spawn.wav-0aac0d435b4ac2452b0ea7a1021cffdc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

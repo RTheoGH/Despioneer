@@ -44,6 +44,9 @@ func get_info() -> Array:
 	
 @onready var tween:= get_tree().create_tween()
 
+func play_spawn() -> void:
+	get_node("AudioStreamPlayer").play()
+
 func fade_in(duration := 0.5):
 	modulate.a = 0.0
 	visible = true
