@@ -4,6 +4,9 @@
 [ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://ressources/Prototype.ttf" id="2_2iy26"]
 [ext_resource type="Texture2D" uid="uid://bjwu8c3rbuvua" path="res://ressources/imgs/glow_Start.png" id="3_2iy26"]
 
+[sub_resource type="Theme" id="Theme_ivtut"]
+default_font = ExtResource("2_2iy26")
+
 [node name="Options" type="Control" unique_id=1526619793]
 layout_mode = 3
 anchors_preset = 15
@@ -207,7 +210,7 @@ offset_left = 0.039993286
 offset_top = -0.14401245
 offset_right = -0.45602417
 offset_bottom = -0.1920166
-theme_override_fonts/font = ExtResource("2_2iy26")
+theme = SubResource("Theme_ivtut")
 alignment = 1
 item_count = 3
 popup/item_0/text = "Windowed"

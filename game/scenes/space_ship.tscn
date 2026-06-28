@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cen30exkwoo0o" path="res://scripts/space_ship.gd" id="1_bt5oy"]
 [ext_resource type="Texture2D" uid="uid://dab8166is4o2q" path="res://ressources/imgs/Sonde.png" id="2_bt5oy"]
+[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://ressources/Prototype.ttf" id="2_n8dcg"]
 [ext_resource type="AudioStream" uid="uid://foqaeerx4ifa" path="res://ressources/sounds/propulseur.mp3" id="3_n0g6o"]
 [ext_resource type="AudioStream" uid="uid://ba2f360xue31b" path="res://ressources/sounds/son explosion.wav" id="4_n0g6o"]
 [ext_resource type="AudioStream" uid="uid://dc573rl1vq0ik" path="res://ressources/sounds/son plouf soleil.wav" id="5_4246p"]
@@ -77,6 +78,7 @@ offset_left = 63.0
 offset_top = 26.0
 offset_right = 108.0
 offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("2_n8dcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1541873896]
 shape = SubResource("CircleShape2D_bhunq")

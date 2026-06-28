@@ -76,7 +76,7 @@ func _on_gravite_area_input_event(_viewport: Node, event: InputEvent, _shape_idx
 		print(planete_index)
 		
 		var canvas = get_parent().get_node("CanvasLayer")
-		var fiche_node = canvas.get_node("Fiche")
+		var fiche_node = canvas.get_node_or_null("Fiche")
 		
 		if fiche_node != null:
 			canvas.remove_child(fiche_node)
