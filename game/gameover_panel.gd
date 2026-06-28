@@ -26,7 +26,7 @@ func _on_button_button_down() -> void:
 	pass # Replace with function body.
 
 
-func _on_line_edit_text_changed(new_text: String) -> void:
+func _on_line_edit_text_changed(_new_text: String) -> void:
 	pass
 
 func _on_button_3_button_down() -> void:

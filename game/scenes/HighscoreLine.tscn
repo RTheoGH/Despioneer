@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bju1anmh7806m"]
 
-[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://tests/este/Prototype.ttf" id="1_gpxx6"]
+[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://ressources/Prototype.ttf" id="1_gpxx6"]
 [ext_resource type="Script" uid="uid://cjxt7tfesrkch" path="res://scripts/highscore_line.gd" id="1_hyc3c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyc3c"]

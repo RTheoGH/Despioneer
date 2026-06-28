@@ -1,0 +1,266 @@
+[gd_scene format=3 uid="uid://i2a6ke6lgvxd"]
+
+[ext_resource type="Script" uid="uid://d2ve12drn56f7" path="res://scripts/options.gd" id="1_yjkok"]
+[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://ressources/Prototype.ttf" id="2_2iy26"]
+[ext_resource type="Texture2D" uid="uid://bjwu8c3rbuvua" path="res://ressources/imgs/glow_Start.png" id="3_2iy26"]
+
+[node name="Options" type="Control" unique_id=1526619793]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yjkok")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=990162830]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6431373)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=783052996]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40800002
+anchor_top = 0.27800003
+anchor_right = 0.95100003
+anchor_bottom = 0.73600006
+offset_left = -13.016022
+offset_top = -0.14401245
+offset_right = -13.552002
+offset_bottom = 0.07196045
+color = Color(0.78431374, 0.81960785, 0.78431374, 0.1882353)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=577238657]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06598613
+anchor_top = 0.27800003
+anchor_right = 0.3450972
+anchor_bottom = 0.73600006
+offset_left = -0.016021729
+offset_top = -0.14401245
+offset_right = -0.55200195
+offset_bottom = 0.07196045
+color = Color(0.78431374, 0.81960785, 0.78431374, 0.1882353)
+metadata/_edit_use_anchors_ = true
+
+[node name="Master" type="HSlider" parent="." unique_id=858561737]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42800003
+anchor_top = 0.34100002
+anchor_right = 0.90400004
+anchor_bottom = 0.43800002
+offset_left = -0.056030273
+offset_top = 0.031982422
+offset_right = -0.40808105
+offset_bottom = 0.17599487
+max_value = 1.0
+step = 0.01
+value = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Music" type="HSlider" parent="." unique_id=1753243181]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42800003
+anchor_top = 0.47200003
+anchor_right = 0.90400004
+anchor_bottom = 0.5694321
+offset_left = -0.056030273
+offset_top = 0.14398193
+offset_right = -0.40808105
+offset_bottom = 0.0079956055
+max_value = 1.0
+step = 0.01
+value = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SFX" type="HSlider" parent="." unique_id=896932480]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42800003
+anchor_top = 0.6
+anchor_right = 0.90400004
+anchor_bottom = 0.698
+offset_left = -0.056030273
+offset_top = 0.19998169
+offset_right = -0.40808105
+offset_bottom = -0.3039856
+max_value = 1.0
+step = 0.01
+value = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Master_Label" type="Label" parent="." unique_id=446708884]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.60200006
+anchor_top = 0.30600002
+anchor_right = 0.70500004
+anchor_bottom = 0.36612347
+offset_left = 0.49591064
+offset_top = -0.28800964
+offset_right = -0.15997314
+offset_bottom = -0.2480011
+theme_override_fonts/font = ExtResource("2_2iy26")
+text = "GLOBAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Music_Label" type="Label" parent="." unique_id=192283992]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.60200006
+anchor_top = 0.441
+anchor_right = 0.70500004
+anchor_bottom = 0.50200003
+offset_left = 0.49591064
+offset_top = 0.23199463
+offset_right = -0.16003418
+offset_bottom = -0.2960205
+theme_override_fonts/font = ExtResource("2_2iy26")
+text = "MUSIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SFX_Label" type="Label" parent="." unique_id=516543850]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.60200006
+anchor_top = 0.569
+anchor_right = 0.70500004
+anchor_bottom = 0.63000005
+offset_left = 0.49591064
+offset_top = 0.28799438
+offset_right = -0.16003418
+offset_bottom = -0.23999023
+theme_override_fonts/font = ExtResource("2_2iy26")
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="lueur" type="TextureRect" parent="." unique_id=110431409]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7699123
+anchor_top = 0.7901065
+anchor_right = 1.0148215
+anchor_bottom = 0.98865676
+offset_left = 0.061035156
+offset_top = 0.011016846
+offset_right = -0.0390625
+offset_bottom = 0.023010254
+texture = ExtResource("3_2iy26")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="." unique_id=479320267]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.83809036
+anchor_top = 0.8457655
+anchor_right = 0.95309025
+anchor_bottom = 0.9307654
+offset_left = 0.51989746
+offset_top = -0.056030273
+offset_right = 0.31848145
+offset_bottom = -0.13598633
+theme_override_fonts/font = ExtResource("2_2iy26")
+text = "CLOSE"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Affichage" type="Label" parent="." unique_id=1588347817]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.100944445
+anchor_top = 0.33069137
+anchor_right = 0.30018753
+anchor_bottom = 0.39069137
+offset_left = -0.288002
+offset_top = -0.28800964
+offset_right = 0.18395996
+offset_bottom = -0.16801453
+theme_override_fonts/font = ExtResource("2_2iy26")
+text = "Mode d'affichage"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Window_mode" type="OptionButton" parent="." unique_id=1398210209]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10065973
+anchor_top = 0.39065433
+anchor_right = 0.30074304
+anchor_bottom = 0.44165435
+offset_left = 0.039993286
+offset_top = -0.14401245
+offset_right = -0.45602417
+offset_bottom = -0.1920166
+theme_override_fonts/font = ExtResource("2_2iy26")
+alignment = 1
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Maximized"
+popup/item_1/id = 1
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Tuto" type="Label" parent="." unique_id=1018482677]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15922223
+anchor_top = 0.48259264
+anchor_right = 0.22987503
+anchor_bottom = 0.5141482
+offset_left = 0.57598877
+offset_top = 0.27998352
+offset_right = 0.18395996
+offset_bottom = -0.16801453
+theme_override_fonts/font = ExtResource("2_2iy26")
+text = "Tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Tuto_check" type="CheckButton" parent="." unique_id=1681133890]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.101
+anchor_top = 0.4801605
+anchor_right = 0.13900001
+anchor_bottom = 0.5171605
+offset_left = -0.352005
+offset_top = -0.14401245
+offset_right = -0.12802124
+offset_bottom = -0.11999512
+offset_transform_enabled = true
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="." unique_id=2046150140]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.27800003
+offset_bottom = -0.14401245
+theme_override_fonts/font = ExtResource("2_2iy26")
+theme_override_font_sizes/font_size = 32
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="item_selected" from="Window_mode" to="." method="_on_option_button_item_selected"]

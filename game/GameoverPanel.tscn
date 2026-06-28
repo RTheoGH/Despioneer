@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://snkjnyds3eqi"]
 
-[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://tests/este/Prototype.ttf" id="1_c8pta"]
+[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://ressources/Prototype.ttf" id="1_c8pta"]
 [ext_resource type="Script" uid="uid://cwh87lq102qm8" path="res://gameover_panel.gd" id="1_mks5g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mks5g"]

@@ -9,6 +9,7 @@ var orbites : Dictionary
 
 var in_range_sun = false
 var sun : Area2D
+var is_dead := false
 
 var current_points = 0
 
@@ -26,6 +27,9 @@ func _ready() -> void:
 
 # On utilise _physics_process pour tout ce qui concerne la physique et les forces
 func _physics_process(_delta: float) -> void:
+	if is_dead:
+		return
+	
 	# On calcule la somme des forces gravitationnelles des planètes à portée
 	var attraction = calculate_attractions()
 	
@@ -35,6 +39,8 @@ func _physics_process(_delta: float) -> void:
 	# On aligne l'angle du vaisseau avec sa trajectoire actuelle (vecteur vitesse)
 	if linear_velocity.length_squared() > 1.0:
 		rotation = linear_velocity.angle()
+		
+	get_node("Label").rotation = -rotation
 
 # Itère à travers orbites et ajoute leurs influences à la force principale
 func calculate_attractions() -> Vector2:
@@ -64,19 +70,29 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Morts"):
 		var text : String
 		if area.name == "Soleil":
+			is_dead = true
+			linear_velocity = Vector2.ZERO
+			#freeze = true
 			text = "Space ship vaporized..."
-			PlayerInfo.set_score(int(PlayerInfo.score/2))
+			PlayerInfo.set_score(int(PlayerInfo.score/2.0))
+			$plouf.play()
+			$plouf_parts.emitting = true
+			$Mbappe.visible = false
+			await $plouf.finished
 		elif area.name == "Borders":
 			text = "Space ship lost..."
 		else:
 			text = "Space ship destroyed..."
-		get_parent().delete_ship(text)
+		
+		get_parent().call_deferred("delete_ship", text)
+		#get_parent().delete_ship(text)
 		
 	if area.is_in_group("Speedrun"):
 		PlayerInfo.set_score(99999)
 		get_parent().get_parent().explode_earth()
 		
-		get_parent().delete_ship("Humanity destroyed !")
+		get_parent().call_deferred("delete_ship", "Humanity destroyed !")
+		#get_parent().delete_ship("Humanity destroyed !")
 		
 		PlayerInfo.reset_game()
 		
@@ -87,11 +103,13 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		orbites[info[0]] = [info[1], info[2], info[3]]
 	elif parent.is_in_group("Destructibles"):
 		current_points = parent.hit()
-		print(current_points)
 		
-		$point_timer.start()
-		get_node("Label").visible = true
-		get_node("Label").text = "+" + str(current_points)
+		if current_points != null and current_points > 0:
+			print(current_points)
+			
+			$point_timer.start()
+			get_node("Label").visible = true
+			get_node("Label").text = "+" + str(current_points)
 		
 	elif parent.is_in_group("Morts"):
 		in_range_sun = true

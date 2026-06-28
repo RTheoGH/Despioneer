@@ -84,19 +84,22 @@ func spawn_ship() -> void:
 	current_ship = ship
 	
 func delete_ship(cause : String) -> void:
-	get_node("SpaceShip").queue_free()
-	remove_child(get_node("SpaceShip"))
-	get_parent().get_node("music").stop()
-	ship_spawned = false
-	current_ship = null
-	cam_directed = false
-	end_directed_cam()
-	var canvas = get_parent().get_node("CanvasLayer")
-	#canvas.get_node("Annoncer").text = cause
-	canvas.fade_in("Annoncer")
-	await canvas.type_text("Annoncer", cause)
-	await get_tree().create_timer(0.25).timeout
-	canvas.fade_out("Annoncer")
+	var spaceShip = get_node("SpaceShip")
+	
+	if spaceShip:
+		spaceShip.queue_free()
+		remove_child(spaceShip)
+		get_parent().get_node("music").stop()
+		ship_spawned = false
+		current_ship = null
+		cam_directed = false
+		end_directed_cam()
+		var canvas = get_parent().get_node("CanvasLayer")
+		#canvas.get_node("Annoncer").text = cause
+		canvas.fade_in("Annoncer")
+		await canvas.type_text("Annoncer", cause)
+		await get_tree().create_timer(0.25).timeout
+		canvas.fade_out("Annoncer")
 	
 	
 func start_directed_cam() -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dm233bd0xy1b" path="res://tests/este/SpaceShip.tscn" id="1_ac0mb"]
 [ext_resource type="PackedScene" uid="uid://nmi7v81obe30" path="res://tests/will/Rocher.tscn" id="2_y2hb3"]
 [ext_resource type="Script" uid="uid://cjl5j3xkn8pv1" path="res://tests/este/HUD.gd" id="3_p5qw8"]
-[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://tests/este/Prototype.ttf" id="4_33arc"]
+[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://ressources/Prototype.ttf" id="4_33arc"]
 
 [node name="TestWill" type="Node2D" unique_id=2138686685]
 

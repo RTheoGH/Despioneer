@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://idxmgy14368n" path="res://scripts/planete.gd" id="1_8li2x"]
 [ext_resource type="Texture2D" uid="uid://b85g6r4sdjvmx" path="res://tests/will/planete.png" id="2_7ec5j"]
-[ext_resource type="PackedScene" uid="uid://csdl3qips5n4k" path="res://scenes/target.tscn" id="2_lhfgk"]
 [ext_resource type="Texture2D" uid="uid://b2lh3tg7iwunp" path="res://tests/will/terre.png" id="3_wfb0q"]
 [ext_resource type="AudioStream" uid="uid://v43j8jhshd0e" path="res://ressources/sounds/son planet spawn.wav" id="5_hu3o5"]
 
@@ -21,7 +20,6 @@ planeteSprites = Array[String](["res://ressources/imgs/planetes/planete_1.png", 
 atmosSprites = Array[String](["res://ressources/imgs/atmospheres/atmos_1.png", "res://ressources/imgs/atmospheres/namek_atmosphere.png", "res://ressources/imgs/atmospheres/atmosphere.png", "res://ressources/imgs/atmospheres/atmosphere_planet_Clo.png", "res://ressources/imgs/atmospheres/atmosphere_lou.png", "res://ressources/imgs/atmospheres/atmo.png"])
 atmosScales = Array[float]([1.2, 1.6, 4.5, 1.2, 1.2, 2.3])
 planeteScales = Array[float]([1.05, 2.2, 2.5, 1.1, 1.05, 1.8])
-target_scene = ExtResource("2_lhfgk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1871859351]
 shape = SubResource("CircleShape2D_8knue")

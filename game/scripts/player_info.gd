@@ -26,12 +26,12 @@ func _process(_delta: float) -> void:
 	#leaderboard()
 	pass
 	
-func leaderboard() -> void:
-	print(PlayerInfo.player_name)
-	print(PlayerInfo.score)
-	print(PlayerInfo.player_list)
-	for score in PlayerInfo.score:
-		PlayerInfo.player_list.append(PlayerInfo.player_name)
+#func leaderboard() -> void:
+	#print(PlayerInfo.player_name)
+	#print(PlayerInfo.score)
+	#print(PlayerInfo.player_list)
+	#for score in PlayerInfo.score:
+		#PlayerInfo.player_list.append(PlayerInfo.player_name)
 
 func set_score(new_score : int) -> void:
 	score = new_score

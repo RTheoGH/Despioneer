@@ -4,7 +4,7 @@ extends Control
 @onready var hs_box = $ScrollContainer/VBoxContainer
 var i = 0
 var player_list_with_pos = []
-
+var options_showing := false
 
 func _ready() -> void:
 	$AudioStreamPlayer2D.play()
@@ -16,6 +16,12 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	pass
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("echap") and options_showing:
+		$Options_hide.hide()
+		$Options.hide()
+		options_showing = false
 
 func _on_start_pressed() -> void:
 	$AudioStreamPlayer2D.stop()
@@ -31,14 +37,23 @@ func generate_hs_tab():
 
 
 func sort_players_and_add_position(player_list):
-	var position = 1
+	var pos = 1
 	
 	for player in player_list:
-		player["position"] = position
-		position += 1
+		player["position"] = pos
+		pos += 1
 		
 	return player_list
 
 
 func _on_exit_pressed() -> void:
+	Settings.save_settings()
 	get_tree().quit()
+
+func _on_options_pressed() -> void:
+	#for child in get_children():
+		#if child != $fond:
+			#child.hide()
+	$Options_hide.show()
+	$Options.show()
+	options_showing = true

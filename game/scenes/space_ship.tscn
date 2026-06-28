@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dab8166is4o2q" path="res://ressources/imgs/Sonde.png" id="2_bt5oy"]
 [ext_resource type="AudioStream" uid="uid://foqaeerx4ifa" path="res://ressources/sounds/propulseur.mp3" id="3_n0g6o"]
 [ext_resource type="AudioStream" uid="uid://ba2f360xue31b" path="res://ressources/sounds/son explosion.wav" id="4_n0g6o"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
-radius = 58.034473
+[ext_resource type="AudioStream" uid="uid://dc573rl1vq0ik" path="res://ressources/sounds/son plouf soleil.wav" id="5_4246p"]
 
 [sub_resource type="Gradient" id="Gradient_82o31"]
 colors = PackedColorArray(0.9254902, 0.8980392, 0, 1, 1, 0, 0.05490196, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 58.034473
 
 [sub_resource type="Gradient" id="Gradient_6lemk"]
 offsets = PackedFloat32Array(0, 0.2605364, 0.61685824, 1)
@@ -23,31 +24,30 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_q40gy"]
 radius = 62.008064
 
+[sub_resource type="Gradient" id="Gradient_n8dcg"]
+offsets = PackedFloat32Array(0, 0.9939759)
+colors = PackedColorArray(3.5618727, 3.5618727, 0.26803443, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0v2ui"]
+gradient = SubResource("Gradient_n8dcg")
+fill = 1
+fill_from = Vector2(0.50869566, 0.5565217)
+fill_to = Vector2(0.5782609, 0.4869565)
+
+[sub_resource type="Gradient" id="Gradient_gtojp"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 0.6039216, 1, 0.36778843, 0.3002166, 1)
+
 [node name="SpaceShip" type="RigidBody2D" unique_id=1690226175]
 collision_mask = 8
 gravity_scale = 0.0
 linear_damp_mode = 1
 script = ExtResource("1_bt5oy")
 
-[node name="Label" type="Label" parent="." unique_id=183800896]
-offset_left = 63.0
-offset_top = 26.0
-offset_right = 108.0
-offset_bottom = 53.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1541873896]
-shape = SubResource("CircleShape2D_bhunq")
-
-[node name="Mbappe" type="Sprite2D" parent="." unique_id=95032140]
-z_index = 1
-z_as_relative = false
-position = Vector2(0, -3.8146973e-06)
+[node name="trail" type="CPUParticles2D" parent="." unique_id=197655109]
+position = Vector2(-34.94683, -3.8600574e-06)
 rotation = 1.5707964
 scale = Vector2(0.23910987, 0.23910989)
-texture = ExtResource("2_bt5oy")
-
-[node name="trail" type="CPUParticles2D" parent="Mbappe" unique_id=197655109]
-position = Vector2(6.198883e-06, 146.15385)
 amount = 400
 speed_scale = 0.1
 randomness = 0.42
@@ -72,8 +72,25 @@ scale_amount_max = 8.0
 color = Color(1, 0.7372549, 0.24705882, 1)
 color_ramp = SubResource("Gradient_82o31")
 
+[node name="Label" type="Label" parent="." unique_id=183800896]
+offset_left = 63.0
+offset_top = 26.0
+offset_right = 108.0
+offset_bottom = 53.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1541873896]
+shape = SubResource("CircleShape2D_bhunq")
+
+[node name="Mbappe" type="Sprite2D" parent="." unique_id=95032140]
+z_index = 1
+z_as_relative = false
+position = Vector2(0, -3.8146973e-06)
+rotation = 1.5707964
+scale = Vector2(0.23910987, 0.23910989)
+texture = ExtResource("2_bt5oy")
+
 [node name="propulseur" type="CPUParticles2D" parent="Mbappe" unique_id=71463668]
-position = Vector2(6.198883e-06, 146.15385)
+position = Vector2(6.198884e-06, 146.15385)
 amount = 400
 speed_scale = 2.0
 randomness = 0.42
@@ -150,6 +167,44 @@ max_distance = 500.0
 bus = &"SFX"
 
 [node name="point_timer" type="Timer" parent="." unique_id=1148251324]
+
+[node name="plouf" type="AudioStreamPlayer2D" parent="." unique_id=68174274]
+stream = ExtResource("5_4246p")
+
+[node name="plouf_parts" type="CPUParticles2D" parent="." unique_id=2057576866]
+position = Vector2(-31, -21)
+emitting = false
+amount = 200
+texture = SubResource("GradientTexture2D_0v2ui")
+lifetime = 3.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+randomness = 0.2
+lifetime_randomness = 0.5
+local_coords = true
+emission_shape = 6
+emission_ring_inner_radius = 1.88
+emission_ring_radius = 63.805
+direction = Vector2(-100, 0)
+spread = 35.65
+gravity = Vector2(0, 0)
+initial_velocity_max = 128.71
+angular_velocity_min = -42.77
+angular_velocity_max = 28.51
+linear_accel_min = -53.47
+linear_accel_max = 20.85
+radial_accel_max = 16.83
+tangential_accel_min = -19.8
+tangential_accel_max = 1.98
+damping_max = 4.951
+angle_min = -57.0
+angle_max = 28.5
+scale_amount_min = 0.1
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_gtojp")
+hue_variation_min = -0.05
+hue_variation_max = 0.03
 
 [connection signal="area_entered" from="AtmosphèreDetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="AtmosphèreDetectionArea" to="." method="_on_detection_area_area_exited"]

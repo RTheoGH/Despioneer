@@ -24,20 +24,26 @@ func create_score(score) -> String:
 			base += "0"
 	return base
 
-@onready var tween:= get_tree().create_tween()
+var tween : Tween #:= get_tree().create_tween()
 
 func fade_in(label: String, duration := 0.5):
 	var obj = self.get_node(label)
 	obj.modulate.a = 0.0
 	obj.visible = true
-	tween.kill()
+	
+	if tween and tween.is_valid():
+		tween.kill()
+	
 	tween = get_tree().create_tween()
 	tween.tween_property(obj, "modulate:a", 1.0, duration)
 	
 func fade_out(obj_name: String, duration := 0.5):
 	var obj = self.get_node(obj_name)
 	obj.modulate.a = 1.0
-	tween.kill()
+	
+	if tween and tween.is_valid():
+		tween.kill()
+		
 	tween = get_tree().create_tween()
 	tween.tween_property(obj, "modulate:a", 0.0, duration)
 	#obj.visible = false

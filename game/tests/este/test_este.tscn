@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjl5j3xkn8pv1" path="res://tests/este/HUD.gd" id="3_go7hu"]
 [ext_resource type="PackedScene" uid="uid://idybvatgvwgc" path="res://tests/este/Planete.tscn" id="3_ixbn4"]
-[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://tests/este/Prototype.ttf" id="3_jsavf"]
+[ext_resource type="FontFile" uid="uid://o8w1hyt3aa18" path="res://ressources/Prototype.ttf" id="3_jsavf"]
 [ext_resource type="PackedScene" uid="uid://28gi7764qbbd" path="res://tests/este/SlingShot.tscn" id="4_jsavf"]
 
 [node name="TestEste" type="Node2D" unique_id=1671598491]

@@ -14,7 +14,8 @@ var rayon = 540
 @export var atmosScales: Array[float]
 @export var planeteScales: Array[float]
 
-@export var target_scene: PackedScene
+#@export 
+var target_scene: PackedScene = preload("res://scenes/target.tscn")
 @export var index_generated = randi_range(0,5)
 var index_planete := 0
 
@@ -31,7 +32,7 @@ func _ready() -> void:
 
 #Spawn un objet à la surface de la planète puis l'oriente vers son centre
 func spawn_target():
-	var target_scene = target_scene
+	#var target_scene = target_scene
 	var target = target_scene.instantiate()
 	target.planeteIndex = planete_index
 	add_child(target)
@@ -42,8 +43,8 @@ func spawn_target():
 #Retourne sous forme de tableau les info de la planete
 func get_info() -> Array:
 	return [planete_name,gravite,global_position,lore]
-	
-@onready var tween:= get_tree().create_tween()
+
+var tween : Tween #:= #get_tree().create_tween()
 
 func play_spawn() -> void:
 	get_node("AudioStreamPlayer").play()
@@ -51,7 +52,10 @@ func play_spawn() -> void:
 func fade_in(duration := 0.5):
 	modulate.a = 0.0
 	visible = true
-	tween.kill()
+	
+	if tween and tween.is_valid():
+		tween.kill()
+	
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, duration)
 
@@ -66,12 +70,26 @@ func generate_planete(index):
 	for i in randi_range(Tmin, Tmax) : spawn_target()
 
 
-func _on_gravite_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_gravite_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		print("clicked")
 		print(planete_index)
+		
+		var canvas = get_parent().get_node("CanvasLayer")
+		var fiche_node = canvas.get_node("Fiche")
+		
+		if fiche_node != null:
+			canvas.remove_child(fiche_node)
+			fiche_node.queue_free()
+		
+		#for child in canvas.get_children():
+			#if child.name == "Fiche":
+				#
+				#child.queue_free()
+		
 		var fiche_scene = load("res://scenes/fiche.tscn")
 		var fiche = fiche_scene.instantiate()
+		fiche.name = "Fiche"
 		fiche.planete_index = planete_index
 		get_parent().get_node("CanvasLayer").add_child(fiche)
 	pass # Replace with function body.

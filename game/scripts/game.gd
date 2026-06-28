@@ -68,8 +68,8 @@ func _process(delta: float) -> void:
 		#data.node.scale = Vector2(data.scale, data.scale)
 	
 	var total_seconds = int(timer.time_left)
-	var minutes = total_seconds / 60
-	var seconds = total_seconds % 60
+	var minutes = total_seconds / 60.0
+	var seconds = total_seconds % int(60.0)
 	canvas.get_node("Time").text = "%02d:%02d" % [minutes, seconds]
 	
 func _input(_event: InputEvent) -> void:
@@ -229,7 +229,7 @@ func explode_earth() -> void:
 	$Launch_zone/explode_sound.play()
 
 func _on_timer_timeout() -> void:
-	canvas.get_node("Time").text = "00:00"
+	canvas.get_node("Time").text = "01:30"
 	canvas.fade_in("Annoncer")
 	await canvas.type_text("Annoncer", "Game Over ...")
 	await get_tree().create_timer(0.25).timeout
